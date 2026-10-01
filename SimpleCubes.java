@@ -36,16 +36,26 @@ class Position {
   }
 }
 
+class RubicsCube{
+  Face[] faces;
+  RubicsCube(){
+    for(int i = 0; i < 6; i ++){
+      faces[i] = new Face()
+    }
+  }
+}
+
 class Face {
   UnitVector direction;
   Facelet[][] faceletList;
   
-  Face(String faceColor){
+  Face(UnitVector direction){
+    this.direction = direction;
     faceletList = new Facelet[3][];
     for(int i = 0; i < 3; i ++){
       faceletList[i] = new Facelet[3];
       for(int j = 0; j < 3; j++){
-        faceletList[i][j] = new Facelet(faceColor,new Position(j, i));
+        faceletList[i][j] = new Facelet(defaultDirectionColor(direction),new Position(j, i));
       }
     }
   }
